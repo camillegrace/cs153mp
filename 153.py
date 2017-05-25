@@ -29,7 +29,7 @@ while 1:
 				print "\nERROR Beyond maximum coefficient in "
 
 		
-			#elif ax.isdigit() == False:
+			#elif r.isdigit() == False:
 			#	print "\nERROR A(x) should be digits only"
 
 	error_printing(a, ax)
@@ -75,19 +75,41 @@ while 1:
 	#working with choice
 	#addition
 	if (choice == "1"):
-		for x in range (0, lena) :
+		for x in range (0, len(ax)) :
 			cx[x] = ax[x]^bx[x]
 			x+=1
-		print "\nC(x): ",
-		print_given(cx)
+		print "\nS O L U T I O N:"
+
+		print " ",
+		for m in ax:
+			print m, " ",
+		print "\n+",
+		for m in bx:
+			print m, " ",
+		print "\n"
+		print " ",
+		for m in cx:
+			print m, " ",
+		print "\n\nA(x)+B(x) = ", print_given(cx)
 
 	#subtraction
 	elif (choice == "2"):
-		for x in range (0, lenb) :
+		for x in range (0, len(bx)) :
 			cx[x] = ax[x]^bx[x]
 			x+=1
-		print "\nC(x): ",
-		print_given(cx)
+		print "\nS O L U T I O N:"
+
+		print " ",
+		for m in ax:
+			print m, " ",
+		print "\n+",
+		for m in bx:
+			print m, " ",
+		print "\n"
+		print " ",
+		for m in cx:
+			print m, " ",
+		print "\n\nA(x) - B(x) = ", print_given(cx)
 
 	#multiplication
 	#elif (choice == "3"):
