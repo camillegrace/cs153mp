@@ -1,5 +1,3 @@
-from operator import add
-
 while 1:
 	print ("\n\nE N T E R  V A L U E S:")
 	ax = raw_input("A(x): ")
