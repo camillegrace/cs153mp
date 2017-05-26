@@ -14,6 +14,8 @@ while 1:
 	#defining length of a&b
 	lena = len(ax)
 	lenb = len(bx)
+
+
 	#input_validation
 	def error_printing(r, s):
 		#defining exponent
@@ -30,10 +32,6 @@ while 1:
 				print "\nERROR Beyond maximum coefficient."
 				exit(0)
 
-		
-			#elif r.isdigit() == False:
-			#	print "\nERROR A(x) should be digits only"
-
 	error_printing(a, ax)
 	error_printing(b, bx)
 	for p in px:
@@ -47,7 +45,7 @@ while 1:
 			print "\nERROR Only binary input are accepted in P(x)."
 			exit(0)
 
-	#stuffing
+	#stuffing  0s
 	i=0
 	if lena > lenb:	
 		lendiff = lena-lenb
@@ -62,32 +60,47 @@ while 1:
 			i+=1
 
 	def mult(b, a, p_int, p_string):
+		print "\n", a, "x", b
 		b_binary = bin(b)[2:]
 		a_binary = bin(a)[2:]
 		b_int = int(b_binary)
 		a_int = int(a_binary)
 		product = b_int*a_int
+		#product = int(bin(a)[2:])*int(bin(b)[2:])
 		prod_string = str(product)
 		modulo = ""
 		xor = ""
+
+		print "x: ", a_binary
+		print "y: ", b_binary
 		
 		for i in prod_string:
 			if int(i) > 1:
 				modulo += str(int(i)%2)
 			else:
 				modulo += i
-		product = int(modulo)
+
 		prod_string = modulo
+		print "x*y", prod_string
+
 		if (len(prod_string) >= len(p_string)):
 			p_list = [0 for i in range(0,len(prod_string))]
 			prod_list = [0 for i in range(0,len(prod_string))]
 			if prod_string[0] == "0":
 				prod_string = prod_string[1:]
+				print "prod_str: ", prod_string
 				for j in range(0,len(prod_string)):
-					xor += str(int(prod_string[j])^int(p_string))
+					xor += str(int(prod_string[j])^int(p_string[j]))
+
+			else:
+				for i in range(0, len(prod_string)-len(p_string)):
+					p_string = p_string + "0"
+				for j in range(0,len(prod_string)):
+					xor += str(int(prod_string[j])^int(p_string[j]))
 		else:
 			xor = prod_string
-		print "Product: ", int(xor, 2)
+
+		#print "Product: ", int(xor, 2)
 		return int(xor, 2)
 
 	#printing
@@ -153,20 +166,13 @@ while 1:
 	elif (choice == "3"):
 		add = [0 for i in range(0, len(ax)+len(bx)-1)]
 		p_string = ""
-		#a_string = ''.join(str(a) for a in ax)
-		#b_string = ''.join(str(b) for b in bx)
-		#a_integer = ''.join(int(a) for a in a_string)
-		#b_integer = ''.join(int(b) for b in b_string)
 
 		for i in px:
 			p_string += str(i)
-		print p_string
+		print "p_string: ", p_string
 
 		p_int = int(p_string, 2)
-		print p_int
-
-		#print a_string
-		#print b_string
+		print "p_int: ", p_int
 
 		ctrb = -1
 		for i in bx:
@@ -174,13 +180,24 @@ while 1:
 			ctra = ctrb - 1
 			for j in ax:
 				ctra += 1
-				print i
-				print j
 				add[ctra] = add[ctra]^mult(i, j, p_int, p_string)
-		print "C(x): ", add
-			
 
-	#division
-	#elif (choice == "4"):
+		print "\n\n"		
+		print " ",
+		for m in ax:
+			print m, " ",
+		print "\nx",
+		for m in bx:
+			print m, " ",
+		print "\n"
+		print " ",
+		for m in add:
+			print m, " ",
+		print "\n\nA(x) - B(x) = ", print_given(add)
+	
+
+	elif (choice == "4"):
+		print "Module not available."	
+		exit(0)		
 
 	elif (choice == "5"):	exit(0)
