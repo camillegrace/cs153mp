@@ -34,6 +34,7 @@ while 1:
 
 	error_printing(a, ax)
 	error_printing(b, bx)
+
 	for p in px:
 		if p < 0:	
 			print "\nERROR no negative coefficient."
@@ -81,7 +82,9 @@ while 1:
 				modulo += i
 
 		prod_string = modulo
-		print "x*y", prod_string
+		binprod = int(prod_string, 2)
+		#print "x*y", prod_string
+
 
 		if (len(prod_string) >= len(p_string)):
 			p_list = [0 for i in range(0,len(prod_string))]
@@ -100,7 +103,7 @@ while 1:
 		else:
 			xor = prod_string
 
-		#print "Product: ", int(xor, 2)
+		print "x*y: ", int(xor, 2)
 		return int(xor, 2)
 
 	#printing
@@ -193,7 +196,7 @@ while 1:
 		print " ",
 		for m in add:
 			print m, " ",
-		print "\n\nA(x) - B(x) = ", print_given(add)
+		print "\n\nA(x) x B(x) = ", print_given(add)
 	
 
 	elif (choice == "4"):
